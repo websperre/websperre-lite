@@ -5,18 +5,16 @@
     "description": "A lighter version of Websperre: the website blocker to manage temptations.",
     "homepage_url": "https://github.com/websperre/websperre-lite",
     "permissions": [
-        "webRequest",
-        "webRequestBlocking",
         "<all_urls>",
         "storage",
-        "tabs"
+        "webRequest",
+        "webRequestBlocking"
     ],
     "browser_action": {
         "default_popup": "popup.html"
     },
     "background": {
-        "scripts": ["background.js"],
-        "persistent": false
+        "scripts": ["background.js"]
     },
     "content_scripts": [
         {

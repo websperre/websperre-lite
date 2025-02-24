@@ -11,11 +11,14 @@ let currentTabUrl = "";
 let urlTypeUrl = "";
 
 const addToList = () => {
+    const finalValue = finalUrlInput.value;
+    if (finalValue === "")
+        return;
     browser.storage.local
         .get("gs")
         .then((result) => {
             const gesperrtSeiten = result.gs || [];
-            gesperrtSeiten.push(finalUrlInput.value);
+            gesperrtSeiten.push(finalValue);
             addBtn.innerHTML = "Added";
             addBtn.disabled = true;
             return browser.storage.local.set({
