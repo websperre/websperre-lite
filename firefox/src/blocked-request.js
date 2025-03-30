@@ -17,11 +17,22 @@ const dGsFill = (gs) => {
     fillBlockedUrls.innerHTML = "";
     const gsLength = gs.length;
     if (gsLength === 0) {
-        fillBlockedUrls.innerHTML = "Nothing to show. Block list is empty";
+        fillBlockedUrls.textContent = "Nothing to show. Block list is empty";
         return;
     }
+
     for (let i = 0; i < gsLength; i++) {
-        fillBlockedUrls.innerHTML += `<div>${gs[i]}</div> <button id="removeEntry-${i}" class="remove-entry" title="Remove '${gs[i]}' from block list">Remove</button>`;
+        const blockedURL = document.createElement("div");
+        blockedURL.textContent = gs[i];
+
+        const removeButton       = document.createElement("button");
+        removeButton.id          = `removeEntry-${i}`;
+        removeButton.className   = "remove-entry";
+        removeButton.title       = `Remove '${gs[i]}' from block list`;
+        removeButton.textContent = "Remove";
+
+        fillBlockedUrls.appendChild(blockedURL);
+        fillBlockedUrls.appendChild(removeButton);
     }
 };
 
